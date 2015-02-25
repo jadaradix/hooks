@@ -1,0 +1,27 @@
+{
+  "name": "hooks",
+  "version": "1.0.0",
+  "description": "Wrapper for http://hooks.events/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jadaradix/hooks"
+  },
+  "keywords": [
+    "hooks",
+    "notifications",
+    "osx"
+  ],
+  "author": "James Garner <j@jada.io> (http://jada.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jadaradix/hooks/issues"
+  },
+  "homepage": "https://github.com/jadaradix/hooks",
+  "dependencies": {
+    "request": "^2.53.0"
+  }
+}
