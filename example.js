@@ -2,7 +2,7 @@ var hooks = require("./index.js");
 
 hooks.hook(
   {
-    "apiKey": "anEdAQl9YJ",
+    "apiKey": "...",
     "title": "Example Hook Title",
     "message": "Example Hook Message"
   },
