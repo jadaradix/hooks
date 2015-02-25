@@ -5,7 +5,15 @@ Wrapper for http://hooks.events/
 
 Install
 -------
-This code isn't on NPM, so you'll need to store it locally. You can do that via `git clone`. Now you just need to `require` it:
+This code isn't on NPM, so you can either store it locally or `npm install` it from this repository. I really recommend installing it from this repository. Do it like this:
+
+	npm install jadaradix/hooks --save
+	
+And then `require` it like this:
+
+	var hooks = require("hooks");
+
+Easy! However, if you want it store it locally (via `git clone`), `require` it like this:
 
     var hooks = require("./hooks");
 
