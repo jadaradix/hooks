@@ -19,7 +19,7 @@ This example includes `./index.js` where the code resides - see "Install" above 
 
 Use
 ---
-The module contains just one method, `hook`. It takes some `options` and an optional `callback` function, which returns the standard `err, data` arguments. It's as easy as this:
+The module contains just one method, `hook`. It takes some `options` and an optional `callback` function, which returns the standard `err, response` arguments. It's as easy as this:
 
     hooks.hook(
       {
