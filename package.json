@@ -1,6 +1,6 @@
 {
   "name": "hooks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Wrapper for http://hooks.events/",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "hooks",
+    "hook",
     "notifications",
     "osx"
   ],
@@ -22,6 +23,6 @@
   },
   "homepage": "https://github.com/jadaradix/hooks",
   "dependencies": {
-    "request": "^2.53.0"
+    "request": "^2.75.0"
   }
 }

@@ -1,51 +1,47 @@
-/*
- * hooks
- * Copyright(c) 2015 James Garner
- * MIT Licensed
-*/
+"use strict";
 
-var request = require('request');
+const request = require("request");
 
-module.exports = {
+const hook = (options, callback) => {
 
-  hook: function(options, callback) {
+  const url = "http://hooks.events/hooks/post.php";
 
-    if (!options) {
-      if (callback) callback("No options were provided");
-      return;
-    }
-
-    if (
-      !options.hasOwnProperty("apiKey") ||
-      !options.hasOwnProperty("title") ||
-      !options.hasOwnProperty("message")
-    ) {
-      if (callback) callback("Options must contain keys 'apiKey', 'title' and 'message'");
-      return;
-    }
-
-    request.post(
-      {
-        url: "http://hooks.events/hooks/post.php",
-        form: {
-          "hooksApi": options.apiKey,
-          "hooksTitle": options.title,
-          "hooksMessage": options.message
-        }
-      },
-      function(err, response, body) {
-        if (response && response.hasOwnProperty("statusCode") && response.statusCode != 200) {
-          if (callback) callback("Server didn't return HTTP OK status");
-          return;
-        }
-        if (err) {
-          if (callback) callback(err);
-          return;
-        }
-        if (callback) callback(null, body);
-      }
-    );
-
+  if (!callback) callback = (err, response) => {  };
+  if (!options) {
+    return callback("No options were provided");
   }
 
-}
+  if (
+    !options.hasOwnProperty("apiKey") ||
+    !options.hasOwnProperty("title") ||
+    !options.hasOwnProperty("message")
+  ) {
+    return callback("Options must contain keys 'apiKey', 'title' and 'message'");
+  }
+
+  return request.post(
+    {
+      "url": url,
+      "form": {
+        "hooksApi": options.apiKey,
+        "hooksTitle": options.title,
+        "hooksMessage": options.message
+      }
+    },
+    (err, response, body) => {
+      if (err) return callback(err);
+      if (body === "not found") {
+        return callback("Body was 'not found'");
+      }
+      if (response.hasOwnProperty("statusCode") && response.statusCode != 200) {
+        return callback("Server didn't return HTTP OK status");
+      }
+      return callback(null, body);
+    }
+  );
+
+};
+
+module.exports = {
+  hook
+};

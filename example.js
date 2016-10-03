@@ -1,4 +1,6 @@
-var hooks = require("./index.js");
+"use strict";
+
+const hooks = require("./index.js");
 
 hooks.hook(
   {
@@ -6,11 +8,10 @@ hooks.hook(
     "title": "Example Hook Title",
     "message": "Example Hook Message"
   },
-  function(err, response) {
-    if (!err) {
-      console.log("Success (" + response + ")");
-    } else {
-      console.log("Failure (" + err + ")");
+  (err, response) => {
+    if (err) {
+      return console.log("Failure (%s)", err);
     }
+    return console.log("Success (%s)", response);
   }
 );

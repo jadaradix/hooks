@@ -5,17 +5,18 @@ Wrapper for http://hooks.events/
 
 Install
 -------
-This code isn't on NPM, so you can either store it locally or `npm install` it from this repository. I really recommend installing it from this repository. Do it like this:
 
 	npm install jadaradix/hooks --save
 	
 And then `require` it like this:
 
-	var hooks = require("hooks");
+	const hooks = require("hooks");
 
-Easy! However, if you want it store it locally (via `git clone`), `require` it like this:
+Easy!
 
-    var hooks = require("./hooks");
+If you want it store it locally (e.g. via `git clone`), `require` it like this:
+
+    const hooks = require("./hooks");
 
 Try now
 -------
@@ -23,11 +24,11 @@ An example, `example.js` is included to get you going. All you need to do is fil
 
 	node example.js
 
-This example includes `./index.js` where the code resides - see "Install" above for how you should do it in external projects.
+This example includes `./index.js` which contains the code.
 
 Use
 ---
-The module contains just one method, `hook`. It takes some `options` and an optional `callback` function, which returns the standard `err, response` arguments. It's as easy as this:
+The module exposes just one method, `hook`. It takes some `options` and an optional `callback` function, which returns the standard node.js `err, response` arguments. It's as easy as this:
 
     hooks.hook(
       {
@@ -35,13 +36,12 @@ The module contains just one method, `hook`. It takes some `options` and an opti
         "title": "Example Hook Title",
         "message": "Example Hook Message"
       },
-      function(err, response) {
-        if (!err) {
-          console.log("Success (" + response + ")");
-        } else {
-          console.log("Failure (" + err + ")");
+      (err, response) => {
+        if (err) {
+          return console.log("Failure (%s)", err);
         }
+        return console.log("Success (%s)", response);
       }
     );
 
-Be sure to fill in your API key!
+Be sure to fill in your API key.
